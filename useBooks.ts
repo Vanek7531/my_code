@@ -127,17 +127,7 @@ export const useCurrentBook = () => {
 
   const filterChapterLvl = (chapter: any, level: number, content: string) => {
     if (!chapter && chapter.level !== level) return;
-    else {
-      return content === "name"
-        ? chapter.name
-        : content === "id"
-        ? chapter.id
-        : content === "parentId"
-        ? chapter.parentId
-        : content === "content"
-        ? chapter.content
-        : null;
-    }
+    return chapter[content];
   };
 
   const chapterLvl = (level: number) => {
@@ -168,7 +158,6 @@ export const useCurrentBook = () => {
         (el: any) => el.id === currentChapeterId.value
       );
     }
-    return null;
   });
 
   const showIcon = (id: number) => {
